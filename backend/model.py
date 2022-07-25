@@ -8,7 +8,7 @@ import confiq
 #Model File
 MODEL_FILE = confiq.DIR_PATH + '/models/model-file-camp-sankey.xlsx'
 MODEL_SHEET = 'app'
-INPUT_FIELDS_RANGE = 'A4:I13' 
+INPUT_FIELDS_RANGE = 'A4:I12' 
 INPUTS_START_CELL = 'G5' #Start of Highlighted Fields
 #OUTPUT_FIELDS_RANGE = 'A56:E83'
 #model-file-camp-sankey
@@ -45,8 +45,32 @@ def setInputs(ws, inputsList):
 #     data = ws.range(OUTPUT_FIELDS_RANGE).value
 #     return toDict(data)
 
+
+app_dir= confiq.DIR_PATH 
+
+command = 'python3 SankeyScript.py'
+
+
 def generateOutput():
-    exec(open("SankeyScript.py").read())
+    print(command)
+    os.popen(command)
+    
+
+
+#command = 'cd {} python3 SankeyScript.py"'.format(app_dir)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #-------------------------------------------
@@ -62,3 +86,7 @@ def toDict(data):
     return result
 
     
+
+    #exec(open("SankeyScript.py").read())
+    #subprocess.call("SankeyScript.py", shell=True)
+    #os.system('SankeyScript.py')

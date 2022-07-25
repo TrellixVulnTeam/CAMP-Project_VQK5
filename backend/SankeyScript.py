@@ -154,7 +154,7 @@ def get_inputs():
     else:
         directory = Country + '_' + str(Year) + '_' + str(Year_to) + '_run time_' + datetime.now().strftime('%d-%m-%Y_%H-%M-%S')
 
-    path = os.path.join(DIR_PATH, 'output', directory)
+    path = os.path.join(DIR_PATH, 'outputs', directory) #edited output to outputs here
     os.mkdir(path)
 
 
@@ -881,8 +881,11 @@ with open(DIR_PATH + f'/hovored_colors.js', 'w') as f:
 
 
 
+#we wnat to get out
 
-webbrowser.open(DIR_PATH + f'/index.html')
+
+#webbrowser.open(DIR_PATH + f'/index.html')
+
 #-----------------#
 # FOR DIAGNOSTIC RUN ONLY #
 #-----------------#

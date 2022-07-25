@@ -67,8 +67,17 @@ def setInputs():
 @app.route('/outputs', methods=['GET']) 
 @cross_origin()
 def outputFile():
-    
-    model.generateOutput()
+    try:
+        model.generateOutput()
+
+        return jsonify(
+                message=f"success: model output",
+                category="success",
+                status=200
+                )
+    except Exception as e:
+        return jsonify({'status': 'fail',
+                        'message': str(e) }), 400
 
 
 #This starts the development server for Flask and allows us to visit our web application from our local machine by visiting the localhost.
