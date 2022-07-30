@@ -1,3 +1,4 @@
+from sys import displayhook
 import xlwings as xw
 import json
 import os
@@ -6,13 +7,22 @@ import confiq
 
 
 #Model File
-MODEL_FILE = confiq.DIR_PATH + '/models/model-file-camp-sankey.xlsx'
-MODEL_SHEET = 'app'
-INPUT_FIELDS_RANGE = 'A4:I12' 
-INPUTS_START_CELL = 'G5' #Start of Highlighted Fields
-#OUTPUT_FIELDS_RANGE = 'A56:E83'
-#model-file-camp-sankey
-#model-file-khcam
+MODEL_FILE_INPUT = confiq.DIR_PATH + '/models/model-file-camp-sankey.xlsx'
+MODEL_SHEET_INPUT = 'app'
+INPUT_FIELDS_RANGE = 'A4:H12' 
+INPUTS_START_CELL = 'F5' #Start of Highlighted Fields
+
+
+
+#FILE_OUTPUT = open('data.json')
+#dataSankey = json.load(FILE_OUTPUT)
+#print(dataSankey)
+
+
+# MODEL_FILE_OUTPUT = confiq.DIR_PATH + '/outputs/Africa_2000_2019_run time_25-07-2022_14-56-02/Africa_2000_2019_GHGs_by_sector.xlsx'
+# MODEL_SHEET_OUTPUT = 'Africa_2000_2019_GHGs_by_sector'
+# OUTPUT_FIELDS_RANGE = 'A1:I7'
+
 
 
 #-------------------------------------------
@@ -21,10 +31,15 @@ INPUTS_START_CELL = 'G5' #Start of Highlighted Fields
 
 def modelFile():
     # app = xw.App(visible=False)
-    wb = xw.Book(MODEL_FILE)
-    ws = wb.sheets[MODEL_SHEET]
-    print(xw.apps)
+    wb = xw.Book(MODEL_FILE_INPUT)
+    ws = wb.sheets[MODEL_SHEET_INPUT]
+    
     return ws
+
+# def modelOutputFile():
+#     wb = xw.Book(MODEL_FILE_OUTPUT)
+#     ows = wb.sheets[MODEL_SHEET_OUTPUT]
+#     return ows
 
 def getInputsFields(ws):
     # getInputsFields
@@ -54,13 +69,12 @@ command = 'python3 SankeyScript.py'
 def generateOutput():
     print(command)
     os.popen(command)
+
+def displayOutput():
+    with open("data.json") as FILE_OUTPUT:
+        data = json.load(FILE_OUTPUT)
+    return data
     
-
-
-#command = 'cd {} python3 SankeyScript.py"'.format(app_dir)
-
-
-
 
 
 
@@ -87,6 +101,6 @@ def toDict(data):
 
     
 
-    #exec(open("SankeyScript.py").read())
-    #subprocess.call("SankeyScript.py", shell=True)
-    #os.system('SankeyScript.py')
+    # exec(open("SankeyScript.py").read())
+    # subprocess.call("SankeyScript.py", shell=True)
+    # os.system('SankeyScript.py')

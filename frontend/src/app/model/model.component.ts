@@ -13,7 +13,10 @@ export class ModelComponent implements OnInit {
   inputFieldsGrouped:any;
   inputsList:any=[];
   outputData:any={};
-  
+
+  outputsList:any=[];
+  outputFileds:any;
+
   loading: boolean = false;
   el: any;
   chartType: any = 'Line chart';
@@ -38,7 +41,7 @@ export class ModelComponent implements OnInit {
       .then((response) => response.json())
       .then(result => {
           this.inputFields = result;
-          
+
           this.inputsList = [];
           for(var i in this.inputFields){
             this.inputFields[i].value = this.inputFields[i].default;
@@ -62,6 +65,26 @@ export class ModelComponent implements OnInit {
     });
   }
 
+  getOutputFields(): void {
+    this.service.generateOutput()
+    .then((response) => response.json())
+    .then(result => {
+        this.outputFileds = JSON.stringify(result);  
+        alert(this.outputFileds)
+
+
+        // this.outputsList = [];
+        // for(var i in this.outputFileds){
+        //   this.outputFileds[i].value = this.outputFileds[i].default;
+        //   this.outputFileds[i].condition = JSON.parse(this.outputFileds[i].condition);
+        //   this.outputsList.push(this.outputFileds[i].default);
+        // }
+  });
+
+    
+  
+  }
+
   getOutput() {
     this.loading = true;
     this.outputData = [];
@@ -75,7 +98,7 @@ export class ModelComponent implements OnInit {
     });
   }
 
-
+  
 
 
   /*************************************
@@ -123,15 +146,6 @@ export class ModelComponent implements OnInit {
     window.location.reload();
   }
   
-  generateOutput(){
-    
-    this.service.generateOutput()
-    
-    //     .then((response) => response.json())
-    //     .then((result) => { 
-             
+ 
 
-    // });
-
-  }
 }

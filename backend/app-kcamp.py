@@ -34,6 +34,13 @@ def getInputFields():
     inputsFields=model.getInputsFields(ws)
     return  json.dumps(inputsFields)
 
+@app.route('/outputs', methods=['GET']) 
+@cross_origin()
+def getOutputFields():
+    model.generateOutput()
+    outputData = model.displayOutput()
+    return json.dumps(outputData)
+
 
 @app.route('/inputs', methods=['POST', 'GET'])
 @cross_origin()
@@ -57,27 +64,31 @@ def setInputs():
         return jsonify({'status': 'fail',
                         'message': str(e) }), 400
 
-#for output button calls sankeyScript.py
 
-# @app.route('/output') 
+
+
+
+
+# @app.route('/outputs', methods=['POST', 'GET']) 
+# @cross_origin()
 # def outputFile():
-#    exec(open("SankeyScript.py").read())
+#     try:
+
+#         model.generateOutput()
+#         ows = model.modelOutputFile()
+#         outputData =model.displayOutput(ows)
+#         return jsonify(
+#                 message=f"success: model output",
+#                 category="success",
+#                 data=outputData,
+#                 status=200
+#                 )
+#     except Exception as e:
+#         return jsonify({'status': 'fail',
+#                         'message': str(e) }), 400
 
 
-@app.route('/outputs', methods=['GET']) 
-@cross_origin()
-def outputFile():
-    try:
-        model.generateOutput()
 
-        return jsonify(
-                message=f"success: model output",
-                category="success",
-                status=200
-                )
-    except Exception as e:
-        return jsonify({'status': 'fail',
-                        'message': str(e) }), 400
 
 
 #This starts the development server for Flask and allows us to visit our web application from our local machine by visiting the localhost.

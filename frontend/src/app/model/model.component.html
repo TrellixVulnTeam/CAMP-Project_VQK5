@@ -26,7 +26,7 @@
         <a (click)="reset()" href="javascript:;" class="btn btn-text-primary">
           <i class="la la-undo-alt icon-md text-blue"></i> RESET
         </a>
-        <a (click)="generateOutput()" href="javascript:;" class="btn btn-text-primary">
+        <a (click)="getOutputFields()" href="javascript:;" class="btn btn-text-primary">
           <i class="la la-undo-alt icon-md text-blue"></i> Run 
         </a>
       </div>
@@ -131,15 +131,18 @@
     <div class="row m-0">
       <div class="col-12">
         <h4 class="pl-5">Results</h4>
+
+        <div>{{outputFileds}} </div> <div>sankey test </div>
+        <div id="container" style="width: 100%; height: 250%;"></div>
+
       </div>
     </div>
 
 
     <!-- Here Run Script button -->
-    <div>
-      <!-- <input type="button" id='script' name="scriptbutton" value=" Run Script " onclick=alert("helo")> -->
-      
-    </div>
+    <!-- <div>
+      <input type="button" id='script' name="scriptbutton" value=" Run " onclick=generateOutput()>
+    </div> -->
 
 
 
@@ -185,3 +188,73 @@
 
 
 </div>
+
+<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-core.min.js"></script>
+<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-sankey.min.js"></script>
+<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-cartesian.min.js"></script>
+<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-data-adapter.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+
+
+  var data, colors_data;
+  
+  anychart.onDocumentReady(function () {
+ 
+      // create a chart and set the data
+      var chart = anychart.sankey(outputFileds);
+  
+      chart.node().fill(function() {
+          var customColor = colors[this.name];
+          if (customColor) return customColor;
+          return this.sourceColor;
+      });
+  
+      chart.node().hovered().fill(function() {
+          var customColor = hovored_colors[this.name];
+          if (customColor) return customColor;
+          return this.sourceColor;
+      });
+  
+  
+      // // replace 'Sector' and  'Subsector' strings
+      const mapObj = {
+      Sector: "",
+      Subsector: ""
+      };
+      
+      chart.node().labels().useHtml(true).format(function() {
+          return "<span style='font-weight:bold'>" + this.name.replace(/\b(?:Sector|Subsector)\b/gi, matched => mapObj[matched]) + "</span><br>" + this.value.toPrecision(2) + " - GtCO2e"  
+      })
+  
+          
+         
+      chart.node().tooltip().format(function() {
+          var incomeText = "";
+          var sum = 0;
+  
+          for (i = 0; i < this.income.length; i++) {
+          sum +=  this.income[i].value ;
+          }
+          for (i = 0; i < this.income.length; i++) {
+          incomeText += this.income[i].name.replace(/\b(?:Sector|Subsector)\b/gi, matched => mapObj[matched]) + ": " + Math.round((this.income[i].value/sum*100 + Number.EPSILON) * 100)/100 +" %\n"
+          }
+          return incomeText;
+      });
+      
+      var tooltip = chart.tooltip();
+      tooltip.fontSize(13);
+      tooltip.fontFamily("Calibri");
+      tooltip.fontStyle("italic");
+      // tooltip.titleFormat("{%name} - {%value} GtCO2e");
+  
+      chart.nodeWidth("80%");
+      chart.nodePadding(40);
+      chart.palette(['#D0D0D0']);
+      chart.title("\n"+title+"\n");
+      chart.container("container");
+      chart.draw();
+      
+  });
+  
+  </script>

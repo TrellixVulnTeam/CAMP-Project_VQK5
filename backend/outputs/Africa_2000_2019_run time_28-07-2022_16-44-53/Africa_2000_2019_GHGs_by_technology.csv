@@ -1,0 +1,61 @@
+Country,Technology,CO2_GtCO2e,CH4_GtCO2e,N2O_GtCO2e,Unit,Percentage,Percentage ,Percentage  ,
+Africa,Technology Electricity Public,0.38673153051634435,0.00022727035422727589,0.001084028427036386,GtCO2e,33.12,0.02,0.46,%
+Africa,Technology Heat Production,3.1776687072939106e-05,4.57148083359778e-06,8.753440087837157e-06,GtCO2e,0.0,0.0,0.0,%
+Africa,Technology Electricity Autoproducer,0.01803296723631749,2.4877276677825283e-05,7.159955127667942e-05,GtCO2e,1.54,0.0,0.03,%
+Africa,Technology Other Transformation,0.08429900452960437,6.443154032609487e-05,0.00019443495622054716,GtCO2e,7.22,0.01,0.08,%
+Africa,Technology Fugitive Solid Fuels,0.035773229544453736,0.11356244544202601,0.0010196116706960392,GtCO2e,3.06,8.9,0.43,%
+Africa,Technology Fugitive Petr,0.08235222931950816,0.38006210321581113,1.0796898504987898e-05,GtCO2e,7.05,29.78,0.0,%
+Africa,Technology Fugitive NG Distr,0.0,0.0013846857308330647,0.0,GtCO2e,0.0,0.11,0.0,%
+Africa,Technology Fugitive NG Prod,0.0,0.032454512126886784,0.0,GtCO2e,0.0,2.54,0.0,%
+Africa,Technology Fugitive Other Energy,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Africa,Technology Fossil Fuel Fires,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Africa,Technology Commercial Institutional,0.010688625499826862,0.0003658864959699464,0.0005051225885031516,GtCO2e,0.92,0.03,0.21,%
+Africa,Technology Residential,0.06288175874377896,0.09021360194245487,0.01235326078823188,GtCO2e,5.38,7.07,5.22,%
+Africa,Technology Agriculture Forestry Fishing,0.014956746833505934,0.00037410581097032183,0.0002447000667920116,GtCO2e,1.28,0.03,0.1,%
+Africa,Technology Other Unspecified,0.009290402325008638,4.9822031353725685e-05,7.29785217976792e-05,GtCO2e,0.8,0.0,0.03,%
+Africa,Technology International Aviation,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Africa,Technology Domestic Aviation,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Africa,Technology Road,0.24350128765437634,0.0009615868598373259,0.0014794636091924568,GtCO2e,20.85,0.08,0.62,%
+Africa,Technology International Shipping,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Africa,Technology Oil Tanker Loading,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Africa,Technology Rail,0.0012978469628760684,2.9727348101277777e-06,0.00011226599727430544,GtCO2e,0.11,0.0,0.05,%
+Africa,Technology Domestic Navigation,0.0024159363657320957,4.365225772156099e-06,3.4845671186983104e-05,GtCO2e,0.21,0.0,0.01,%
+Africa,Technology Other Transp,0.0004984109385618292,3.8127178757135648e-06,5.095868399150623e-06,GtCO2e,0.04,0.0,0.0,%
+Africa,Technology Ind Comb Iron steel,0.013423569359895571,8.107254531291726e-05,4.9957990208749824e-05,GtCO2e,1.15,0.01,0.02,%
+Africa,Technology Ind Comb Non Ferrous Metals,0.0019386178578216658,1.3043131615699466e-05,1.0891550117135979e-05,GtCO2e,0.17,0.0,0.0,%
+Africa,Technology Ind Comb Chemicals,0.003076727854271875,5.422096421772402e-05,3.169605075619569e-06,GtCO2e,0.26,0.0,0.0,%
+Africa,Technology Ind Comb Pulp Paper,0.0003361015835298518,5.141862231830657e-06,3.279853150498487e-07,GtCO2e,0.03,0.0,0.0,%
+Africa,Technology Ind Comb Food Tobacco,0.0021210904204876846,7.729744845693924e-06,4.968465149529972e-06,GtCO2e,0.18,0.0,0.0,%
+Africa,Technology Ind Comb Non Metalic Minerals,0.013905038903091919,4.6702737026275305e-05,4.770957569672109e-05,GtCO2e,1.19,0.0,0.02,%
+Africa,Technology Ind Comb Construction,0.004853118602599632,1.0801520742936824e-05,2.829571198757953e-05,GtCO2e,0.42,0.0,0.01,%
+Africa,Technology Ind Comb Machinery,9.890568453639769e-05,2.122704459154517e-06,9.315595732824141e-08,GtCO2e,0.01,0.0,0.0,%
+Africa,Technology Ind Comb Mining Quarying,0.007070218052357342,1.0351737600599183e-05,2.5719957555391616e-05,GtCO2e,0.61,0.0,0.01,%
+Africa,Technology Ind Comb Other,0.07232558198758322,0.0006401569150316933,0.0010105443205466675,GtCO2e,6.19,0.05,0.43,%
+Africa,Technology Ind Comb Textile Leather,0.0002208556628614217,1.1992217240579279e-06,1.2102602386290804e-06,GtCO2e,0.02,0.0,0.0,%
+Africa,Technology Ind Comb Transpequip,2.1899304059427137e-05,3.459050114025506e-07,2.5110454634410635e-08,GtCO2e,0.0,0.0,0.0,%
+Africa,Technology Ind Comb Wood Products,3.6204969128307865e-05,2.0315965705833024e-07,1.2054462341142167e-07,GtCO2e,0.0,0.0,0.0,%
+Africa,Technology Cement Production,0.056488729849999995,0.0,0.0,GtCO2e,4.84,0.0,0.0,%
+Africa,Technology Lime Production,0.002437538593167215,0.0,0.0,GtCO2e,0.21,0.0,0.0,%
+Africa,Technology Other Minerals,0.0004888999031533398,0.0,0.0,GtCO2e,0.04,0.0,0.0,%
+Africa,Technology Chemical Industry,0.014748321758607727,0.00012701056436385433,0.0008252904513221988,GtCO2e,1.26,0.01,0.35,%
+Africa,Technology Chemicals Nitric Acid,0.0,0.0,0.007718516829773645,GtCO2e,0.0,0.0,3.26,%
+Africa,Technology Chemicals Adipic Acid,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Africa,Technology Metal Production,0.010727034605972019,0.00014760643743809274,0.0,GtCO2e,0.92,0.01,0.0,%
+Africa,Technology Chemical Products Manufacture Processing,0.00010011997890718979,0.0,0.0,GtCO2e,0.01,0.0,0.0,%
+Africa,Technology Degreasing Cleaning,0.0007460189249630879,0.0,0.0,GtCO2e,0.06,0.0,0.0,%
+Africa,Technology Other Product Use,0.003721294984495321,0.0,0.001198266567970923,GtCO2e,0.32,0.0,0.51,%
+Africa,Technology Paint Application,0.0007706728598420434,0.0,0.0,GtCO2e,0.07,0.0,0.0,%
+Africa,Technology Pulp and Paper Food Beverage Wood,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Africa,Technology Other Process Emissions,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Africa,Technology Manure Management,0.0,0.012680711959999999,0.15354405810000002,GtCO2e,0.0,0.99,64.84,%
+Africa,Technology Rice Cultivation,0.0,0.03236234106,0.0,GtCO2e,0.0,2.54,0.0,%
+Africa,Technology Soil Emissions,0.0,0.0,0.028843455949999996,GtCO2e,0.0,0.0,12.18,%
+Africa,Technology Enteric Fermentation,0.0,0.32053241682000017,0.0,GtCO2e,0.0,25.12,0.0,%
+Africa,Technology Agriculture Other,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Africa,Technology Indirect N2O Non Agricultural N,0.0,0.0,0.013777709758531164,GtCO2e,0.0,0.0,5.82,%
+Africa,Technology Solid Waste Disposal,0.0,0.1399129427896609,0.0,GtCO2e,0.0,10.96,0.0,%
+Africa,Technology Waste Combustion,0.005358039567631168,0.006053835438636596,0.0035175812648827313,GtCO2e,0.46,0.47,1.49,%
+Africa,Technology Wastewater Handling,0.0,0.1436858965157924,0.008994332666132419,GtCO2e,0.0,11.26,3.8,%
+Africa,Technology Other Waste Handling,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Africa,Technology Other In Total,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Africa,Technology Other Not In Total,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%

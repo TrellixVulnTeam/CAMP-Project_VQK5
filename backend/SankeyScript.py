@@ -53,7 +53,7 @@ def get_inputs():
     
     # Subsector_Name_ = []
     # Subsector_Name = input_df.iloc[5:64,4].unique()
-    # for val in Subsector_Name:
+    # for val in Subsector_Name
     #     val = val.replace(" ", "_")
     #     Subsector_Name_.append(val)
     # Subsector_lists = [val for i, val in enumerate(Subsector_Name_)]
@@ -867,8 +867,8 @@ with open(path + f'/by subsector data.txt', 'w') as outfile:
 with open(path + f'/sankey chart data.txt', 'w') as outfile:
     json.dump(final_data, outfile)
 
-with open(DIR_PATH + f'/data.js', 'w') as f:
-    f.write("sankeydata = " + json.dumps(final_data))
+with open(DIR_PATH + f'/data.json', 'w') as f:
+    f.write(json.dumps(final_data))
     
 with open(DIR_PATH + f'/title.js', 'w') as f:
     f.write("title = " + json.dumps(title))

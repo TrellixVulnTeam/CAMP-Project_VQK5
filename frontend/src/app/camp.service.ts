@@ -33,11 +33,21 @@ export class CampService {
   }
 
   generateOutput(){
-    
     return fetch(environment.url + '/outputs', {
       headers: this.getHeaders(),
     });
-
+    
   }
+
+// // displays data
+
+//   displayOutput(data: any){
+
+//     return fetch(environment.url + '/outputs', {
+//       method: 'POST',
+//       headers: this.getHeaders(),
+//       body: JSON.stringify({ 'data': data })
+//     });
+//   }
 
 }
