@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request, send_file, send_from_directory, render_template
 from os import path
 import json
-import model
+import model 
 from flask_cors import CORS, cross_origin
 from flask_compress import Compress
 from datetime import datetime
