@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request, send_file, send_from_directory, render_template
 from os import path
 import json
-import model 
+import model
 from flask_cors import CORS, cross_origin
 from flask_compress import Compress
 from datetime import datetime
@@ -17,9 +17,6 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 Compress(app)
 
 
-#python decorator: It takes the function directly below it and modifies it
-#a single route /, the default "root" of our application.
-
 @app.route('/')  
 @cross_origin()
 def index():
@@ -30,6 +27,7 @@ def index():
 @app.route('/inputfields', methods=['GET'])
 @cross_origin()
 def getInputFields():
+    
     ws=model.modelFile()
     inputsFields=model.getInputsFields(ws)
     return  json.dumps(inputsFields)
@@ -69,26 +67,6 @@ def setInputs():
 
 
 
-# @app.route('/outputs', methods=['POST', 'GET']) 
-# @cross_origin()
-# def outputFile():
-#     try:
-
-#         model.generateOutput()
-#         ows = model.modelOutputFile()
-#         outputData =model.displayOutput(ows)
-#         return jsonify(
-#                 message=f"success: model output",
-#                 category="success",
-#                 data=outputData,
-#                 status=200
-#                 )
-#     except Exception as e:
-#         return jsonify({'status': 'fail',
-#                         'message': str(e) }), 400
-
-
-
 
 
 #This starts the development server for Flask and allows us to visit our web application from our local machine by visiting the localhost.
@@ -99,8 +77,3 @@ if __name__ == "__main__":
 
 
 
-
-
-
-
-#Using different @app.route calls, we can 'trigger' different parts of the code when the user visits different parts of our application.

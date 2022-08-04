@@ -19,7 +19,7 @@ INPUTS_START_CELL = 'F5' #Start of Highlighted Fields
 #-------------------------------------------
 
 def modelFile():
-    # app = xw.App(visible=False)
+    app = xw.App(visible=False)
     wb = xw.Book(MODEL_FILE_INPUT)
     ws = wb.sheets[MODEL_SHEET_INPUT]
     
@@ -55,16 +55,6 @@ def displayOutput():
         data = json.load(FILE_OUTPUT)
     return data
     
-
-
-
-
-
-
-
-
-
-
 
 
 #-------------------------------------------
