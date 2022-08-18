@@ -1,3 +1,9 @@
+
+<script src="//cdn.amcharts.com/lib/4/core.js"></script>
+<script src="//cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="//cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+
 <div *ngIf="loading" class="loading">
   <div class="card card-custom gutter-b  shadow p-3 bg-white rounded">
     <div class="card-body">
@@ -16,105 +22,95 @@
 <!-- Inputs/ Outputs -->
 <div class="row" style="margin-top:-10px;">
   <!-- Inputs -->
-  <div class="col-4 p-2  border-secondary">
-    <div class="row m-0">
-      <div class="col-9">
+  <div class="col-4 p-2  border-secondary" >
+    <div class="row m-0" >
+      <div class="col-9" >
         <h4>Inputs</h4>
       </div>
       <!-- reset -->
       <div class="col-3">
-        <a (click)="reset()" href="javascript:;" class="btn btn-text-primary">
+        <!-- <a (click)="reset()" href="javascript:;" class="btn btn-text-primary">
           <i class="la la-undo-alt icon-md text-blue"></i> RESET
-        </a>
+        </a> -->
         <a (click)="getOutputFields()" href="javascript:;" class="btn btn-text-primary">
           <i class="la la-undo-alt icon-md text-blue"></i> Run 
         </a>
+        <a (click)="displayChart()" href="javascript:;" class="btn btn-text-primary">
+          <i class="la la-undo-alt icon-md text-blue"></i> Display 
+        </a>
       </div>
     </div>
-    <div class="card card-custom gutter-b">
+    <div class="card card-custom gutter-b" >
       <div class="input-scroll">
         <div class="accordion accordion-toggle-arrow" id="accordionInput">
           <ng-container *ngFor="let inp of inputFieldsGrouped,let i = index">
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title collapsed"  data-toggle="collapse" [attr.data-target]="'#inputcollapse'+i+1">
-                {{inp.group}}
-              </div>
-              
-            </div>
-            <!--begin::Form-->
-            <form ngNativeValidate>
-              
-              <div [id]="'inputcollapse'+i+1" class="collapse" [ngClass]="{'show' : i == 0 }" data-parent="#accordionInput">
-                <div class="card-body" *ngFor="let header of inp.items2,let j = index">
-                  
-                    <!-- level0 -->
-                    <div class="row ml-0" *ngIf="header.group">
-                      <div class="col-12">
-                        <label class="">
-                          {{header.group}}&nbsp;
-                        </label>
-                      </div>
-                    </div>
-
-                    <!-- header -->
-                    <ng-container *ngFor="let header2 of inp.items3,let x = index">
-                        <ng-container *ngFor="let row of header2.items, let z = index">
-                          <ng-container *ngIf="row.level0 == header.group">
-                              <div class="form-group">
-                              <!-- inputs -->
-                              <div class="row ml-0">
-                                <div class="col-7">
-                                  <!-- label -->
-                                  <label>{{row.input}}</label>
-                                </div>
-                                
-                                <!-- input -->
-                                <div class="col-5">
-                                  
-                                    <!-- <div class="input-group" *ngIf="row.type=='date'"> 
-                                      <input id="input_{{row.id}}" [value]="row.value" (change)="onInputChange($event, row)"
-                                      class="form-control " type="number"/>
-                                    </div>
-
-                                    <div class="input-group" *ngIf="row.type=='integer' || row.type=='double'">
-                                      <input id="input_{{row.id}}" [value]="row.value | number:'1.2-2'" (change)="onInputChange($event, row)"
-                                      class="form-control " type="number"/> -->
-
-                                      <!-- unit -->
-                                      <!-- <div class="input-group-append"><span class="input-group-text">{{row.unit}}</span></div>
-                                    </div> 
-                                    -->
-                                    <select *ngIf="row.type=='option'" (change)="onInputChange($event, row)" class="form-control"
-                                    id="input_{{row.id}}">
-                                      <option *ngFor="let option of row.condition" [selected]="option == row.value">{{option}}</option>
-                                    </select>
-
-                                </div>
-                               
-                              </div>
-
-                              
-                              <div class="row ml-0" *ngIf="row.type=='integer' || row.type=='double'">
-                                <div class="col-7"></div>
-                                <div class="col-5">
-                                  <span [ngClass]="(row.value<row.condition.min[1] || row.value>row.condition.max[1])?'text-danger':'text-muted'" class="form-text">
-                                    Value range: {{row.condition.min[1]}} - {{row.condition.max[1]}}.
-                                </span>
-
-                                </div>
-
-                              </div>
-                            </div>
-                          </ng-container>
-                        </ng-container>
-                        
-                    </ng-container>
-                    <div  class="separator separator-solid separator-border-1"></div>
+            <div class="card" >
+              <div class="card-header">
+                <div class="card-title collapsed"  data-toggle="collapse" [attr.data-target]="'#inputcollapse'+i+1">
+                  {{inp.group}}
                 </div>
+                
               </div>
-            </form>
-          </div>
+              <!--begin::Form-->
+              <form ngNativeValidate>
+                
+                <div [id]="'inputcollapse'+i+1" class="collapse" [ngClass]="{'show' : i == 0 }" data-parent="#accordionInput">
+                  <div class="card-body" *ngFor="let header of inp.items2,let j = index" >
+                    
+                      <!-- level0 -->
+                      <div class="row ml-0" *ngIf="header.group">
+                        <div class="col-12">
+                          <label class="">
+                            {{header.group}}&nbsp;
+                          </label>
+                        </div>
+                      </div>
+
+                      <!-- header -->
+                      <ng-container *ngFor="let header2 of inp.items3,let x = index">
+                          <ng-container *ngFor="let row of header2.items, let z = index">
+                            <ng-container *ngIf="row.level0 == header.group">
+                                <div class="form-group">
+                                <!-- inputs -->
+                                <div class="row ml-0">
+                                  <div class="col-7">
+                                    <!-- label -->
+                                    <label>{{row.input}}</label>
+                                  </div>
+                                  
+                                  <!-- input -->
+                                  <div class="col-5">
+                                  
+                                      <select *ngIf="row.type=='option'" (change)="onInputChange($event, row)" class="form-control"
+                                      id="input_{{row.id}}">
+                                        <option *ngFor="let option of row.condition" [selected]="option == row.value">{{option}}</option>
+                                      </select>
+
+                                  </div>
+                                
+                                </div>
+
+                                
+                                <div class="row ml-0" *ngIf="row.type=='integer' || row.type=='double'">
+                                  <div class="col-7"></div>
+                                  <div class="col-5">
+                                    <span [ngClass]="(row.value<row.condition.min[1] || row.value>row.condition.max[1])?'text-danger':'text-muted'" class="form-text">
+                                      Value range: {{row.condition.min[1]}} - {{row.condition.max[1]}}.
+                                  </span>
+
+                                  </div>
+
+                                </div>
+                              </div>
+                            </ng-container>
+                          </ng-container>
+                          
+                      </ng-container>
+                      <div  class="separator separator-solid separator-border-1"></div>
+                  </div>
+                </div>
+              </form>
+            </div>
           </ng-container>
         </div>
       </div>
@@ -123,26 +119,19 @@
 
   <!-- Outputs -->
 
-  
-
   <div class="col-8 p-2">
     
     
     <div class="row m-0">
       <div class="col-12">
-        <h4 class="pl-5">Results</h4>
+        <h4 class="pl-5">Visualization</h4>
 
-        <div>{{outputFileds}} </div> <div>sankey test </div>
-        <div id="container" style="width: 100%; height: 250%;"></div>
+        <!-- <div>{{outputFileds}}</div>  -->
+
+        <div id="chartdiv" style="width: 100%; height: 90vh;"></div>
 
       </div>
     </div>
-
-
-    <!-- Here Run Script button -->
-    <!-- <div>
-      <input type="button" id='script' name="scriptbutton" value=" Run " onclick=generateOutput()>
-    </div> -->
 
 
 
@@ -189,72 +178,4 @@
 
 </div>
 
-<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-core.min.js"></script>
-<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-sankey.min.js"></script>
-<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-cartesian.min.js"></script>
-<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-data-adapter.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>
-
-
-  var data, colors_data;
   
-  anychart.onDocumentReady(function () {
- 
-      // create a chart and set the data
-      var chart = anychart.sankey(outputFileds);
-  
-      chart.node().fill(function() {
-          var customColor = colors[this.name];
-          if (customColor) return customColor;
-          return this.sourceColor;
-      });
-  
-      chart.node().hovered().fill(function() {
-          var customColor = hovored_colors[this.name];
-          if (customColor) return customColor;
-          return this.sourceColor;
-      });
-  
-  
-      // // replace 'Sector' and  'Subsector' strings
-      const mapObj = {
-      Sector: "",
-      Subsector: ""
-      };
-      
-      chart.node().labels().useHtml(true).format(function() {
-          return "<span style='font-weight:bold'>" + this.name.replace(/\b(?:Sector|Subsector)\b/gi, matched => mapObj[matched]) + "</span><br>" + this.value.toPrecision(2) + " - GtCO2e"  
-      })
-  
-          
-         
-      chart.node().tooltip().format(function() {
-          var incomeText = "";
-          var sum = 0;
-  
-          for (i = 0; i < this.income.length; i++) {
-          sum +=  this.income[i].value ;
-          }
-          for (i = 0; i < this.income.length; i++) {
-          incomeText += this.income[i].name.replace(/\b(?:Sector|Subsector)\b/gi, matched => mapObj[matched]) + ": " + Math.round((this.income[i].value/sum*100 + Number.EPSILON) * 100)/100 +" %\n"
-          }
-          return incomeText;
-      });
-      
-      var tooltip = chart.tooltip();
-      tooltip.fontSize(13);
-      tooltip.fontFamily("Calibri");
-      tooltip.fontStyle("italic");
-      // tooltip.titleFormat("{%name} - {%value} GtCO2e");
-  
-      chart.nodeWidth("80%");
-      chart.nodePadding(40);
-      chart.palette(['#D0D0D0']);
-      chart.title("\n"+title+"\n");
-      chart.container("container");
-      chart.draw();
-      
-  });
-  
-  </script>

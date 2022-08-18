@@ -39,6 +39,14 @@ export class CampService {
     
   }
 
+
+  displayChart(){
+    return fetch(environment.url + '/chart', {
+      headers: this.getHeaders(),
+    });
+    
+  }
+
 // // displays data
 
 //   displayOutput(data: any){

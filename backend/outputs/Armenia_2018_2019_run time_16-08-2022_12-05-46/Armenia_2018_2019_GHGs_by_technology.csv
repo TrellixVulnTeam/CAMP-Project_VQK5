@@ -1,0 +1,61 @@
+Country,Technology,CO2_GtCO2e,CH4_GtCO2e,N2O_GtCO2e,Unit,Percentage,Percentage ,Percentage  ,
+Armenia,Technology Electricity Public,0.000607858089612398,8.359988595955793e-07,1.064876658755666e-06,GtCO2e,8.28,0.03,0.07,%
+Armenia,Technology Heat Production,0.00037873983215011195,1.5017177797643682e-08,2.1842446459254503e-07,GtCO2e,5.16,0.0,0.01,%
+Armenia,Technology Electricity Autoproducer,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Other Transformation,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Fugitive Solid Fuels,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Fugitive Petr,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Fugitive NG Distr,0.0,0.0006560197375199999,0.0,GtCO2e,0.0,23.43,0.0,%
+Armenia,Technology Fugitive NG Prod,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Fugitive Other Energy,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Fossil Fuel Fires,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Commercial Institutional,0.0001084889947523996,2.2849599120640234e-06,1.7348603581509203e-08,GtCO2e,1.48,0.08,0.0,%
+Armenia,Technology Residential,0.0032809288326638604,2.6928237925079842e-05,6.573525653888204e-06,GtCO2e,44.72,0.96,0.42,%
+Armenia,Technology Agriculture Forestry Fishing,0.000257837886475589,4.800347691748224e-08,1.768146301614389e-07,GtCO2e,3.51,0.0,0.01,%
+Armenia,Technology Other Unspecified,7.19366149545211e-05,2.1643898586981867e-08,1.8393474065008087e-07,GtCO2e,0.98,0.0,0.01,%
+Armenia,Technology International Aviation,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Domestic Aviation,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Road,0.0009358283788022321,8.892079402243212e-05,2.755250636571694e-05,GtCO2e,12.75,3.18,1.75,%
+Armenia,Technology International Shipping,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Oil Tanker Loading,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Rail,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Domestic Navigation,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Other Transp,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Ind Comb Iron steel,6.99362665843594e-05,3.6899358218279656e-08,4.687167189110723e-08,GtCO2e,0.95,0.0,0.0,%
+Armenia,Technology Ind Comb Non Ferrous Metals,0.0001243693682959048,6.249394464105072e-08,9.983693255816593e-08,GtCO2e,1.7,0.0,0.01,%
+Armenia,Technology Ind Comb Chemicals,1.22673017336038e-05,6.4724009894631984e-09,8.221613333521555e-09,GtCO2e,0.17,0.0,0.0,%
+Armenia,Technology Ind Comb Pulp Paper,2.08670596499447e-05,1.100975426042711e-08,1.3985218557021268e-08,GtCO2e,0.28,0.0,0.0,%
+Armenia,Technology Ind Comb Food Tobacco,0.000258878006687495,1.3658767861269215e-07,1.735014690074083e-07,GtCO2e,3.53,0.0,0.01,%
+Armenia,Technology Ind Comb Non Metalic Minerals,0.000421388137900701,2.223303102772307e-07,2.824166559514835e-07,GtCO2e,5.74,0.01,0.02,%
+Armenia,Technology Ind Comb Construction,1.972885639631128e-05,1.0409222209858352e-08,1.3222388453911012e-08,GtCO2e,0.27,0.0,0.0,%
+Armenia,Technology Ind Comb Machinery,4.55281301453336e-06,2.4021282022749983e-09,3.0513204124409928e-09,GtCO2e,0.06,0.0,0.0,%
+Armenia,Technology Ind Comb Mining Quarying,6.06974515621148e-05,2.1039559151996803e-08,8.814684278901319e-08,GtCO2e,0.83,0.0,0.01,%
+Armenia,Technology Ind Comb Other,0.00010314375519860901,4.314740446612344e-09,2.9605396297736885e-07,GtCO2e,1.41,0.0,0.02,%
+Armenia,Technology Ind Comb Textile Leather,2.52934056362965e-06,1.3345156679305542e-09,1.6951780069116616e-09,GtCO2e,0.03,0.0,0.0,%
+Armenia,Technology Ind Comb Transpequip,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Ind Comb Wood Products,3.79401084544448e-07,2.0017735018958355e-10,2.542767010367499e-10,GtCO2e,0.01,0.0,0.0,%
+Armenia,Technology Cement Production,0.0003094,0.0,0.0,GtCO2e,4.22,0.0,0.0,%
+Armenia,Technology Lime Production,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Other Minerals,3.03109062382451e-07,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Chemical Industry,1.156786930212147e-07,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Chemicals Nitric Acid,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Chemicals Adipic Acid,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Metal Production,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Chemical Products Manufacture Processing,2.98018530807598e-08,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Degreasing Cleaning,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Other Product Use,0.000214333131587227,0.0,2.234951125473213e-05,GtCO2e,2.92,0.0,1.42,%
+Armenia,Technology Paint Application,3.47777432139637e-05,0.0,0.0,GtCO2e,0.47,0.0,0.0,%
+Armenia,Technology Pulp and Paper Food Beverage Wood,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Other Process Emissions,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Manure Management,0.0,5.3092200000000006e-05,0.0010492259999999999,GtCO2e,0.0,1.9,66.46,%
+Armenia,Technology Rice Cultivation,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Soil Emissions,0.0,0.0,0.00027683000000000037,GtCO2e,0.0,0.0,17.53,%
+Armenia,Technology Enteric Fermentation,0.0,0.0012506172,0.0,GtCO2e,0.0,44.66,0.0,%
+Armenia,Technology Agriculture Other,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Indirect N2O Non Agricultural N,0.0,0.0,6.680049622776539e-05,GtCO2e,0.0,0.0,4.23,%
+Armenia,Technology Solid Waste Disposal,0.0,0.0004842137832819042,0.0,GtCO2e,0.0,17.29,0.0,%
+Armenia,Technology Waste Combustion,3.7784309703574095e-05,2.1594378565063452e-05,1.95979962585561e-05,GtCO2e,0.51,0.77,1.24,%
+Armenia,Technology Wastewater Handling,0.0,0.00021519698275073357,0.00010718034333977771,GtCO2e,0.0,7.68,6.79,%
+Armenia,Technology Other Waste Handling,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Other In Total,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Technology Other Not In Total,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%

@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CampService } from '../camp.service';
+import * as am4core from "@amcharts/amcharts4/core";
+import * as am4charts from "@amcharts/amcharts4/charts";
+import am4themes_animated from "@amcharts/amcharts4/themes/animated"
+import { any } from '@amcharts/amcharts4/.internal/core/utils/Array';
+
+
 
 @Component({
   selector: 'app-model',
@@ -13,20 +19,18 @@ export class ModelComponent implements OnInit {
   inputFieldsGrouped:any;
   inputsList:any=[];
   outputData:any={};
-
   outputsList:any=[];
   outputFileds:any;
-
   loading: boolean = false;
   el: any;
   chartType: any = 'Line chart';
-  
   errstatus:boolean = false;
+  nIntervId: any;
 
   constructor(private service: CampService) { }
 
   ngOnInit(): void {
-    this.loading = true;
+    //this.loading = true;
     this.getInputFields();
     
   }
@@ -41,6 +45,7 @@ export class ModelComponent implements OnInit {
       .then((response) => response.json())
       .then(result => {
           this.inputFields = result;
+          
 
           this.inputsList = [];
           for(var i in this.inputFields){
@@ -49,7 +54,7 @@ export class ModelComponent implements OnInit {
             this.inputsList.push(this.inputFields[i].default);
           }
         
-        this.getOutput();
+       // this.getOutput();
         this.inputFieldsGrouped = this.groupBy(this.inputFields, 'inputgroup');
         this.inputFieldsGrouped = this.inputFieldsGrouped.__zone_symbol__value;
         
@@ -69,17 +74,19 @@ export class ModelComponent implements OnInit {
     this.service.generateOutput()
     .then((response) => response.json())
     .then(result => {
-        this.outputFileds = JSON.stringify(result);  
-        alert(this.outputFileds)
-
-
-        // this.outputsList = [];
-        // for(var i in this.outputFileds){
-        //   this.outputFileds[i].value = this.outputFileds[i].default;
-        //   this.outputFileds[i].condition = JSON.parse(this.outputFileds[i].condition);
-        //   this.outputsList.push(this.outputFileds[i].default);
-        // }
+        //this.drawSankey(result);
   });
+}
+
+  displayChart(): void {
+    this.service.displayChart()
+    .then((response) => response.json())
+    .then(result => {
+        //this.outputFileds = result.xx;
+        this.drawSankey(result);
+  });
+
+  
 
     
   
@@ -92,6 +99,7 @@ export class ModelComponent implements OnInit {
         .then((response) => response.json())
         .then((result) => { 
           this.loading = false; 
+          alert("Generated! click on Display")
           this.outputData = this.groupBy(result.data, 'group');     
           this.outputData = this.outputData["__zone_symbol__value"];     
 
@@ -147,5 +155,44 @@ export class ModelComponent implements OnInit {
   }
   
  
+  drawSankey(data:any){
+    am4core.useTheme(am4themes_animated);
+    var chart = am4core.create("chartdiv", am4charts.SankeyDiagram);
+    chart.exporting.menu = new am4core.ExportMenu();
+    chart.data = data.sankeydata
+    chart.dataFields.fromName = "from";
+    chart.dataFields.toName = "to";
+    chart.dataFields.value = "weight";
+    chart.dataFields.color = "nodeColor";
 
+    chart.paddingRight = 50;
+    chart.paddingTop = 20;
+    chart.paddingBottom = 80;
+    chart.nodeAlign = "bottom";
+
+    // Add title
+    chart.titles.template.fontSize = 20;
+    chart.titles.create().text = data.title;
+
+    // Configure links
+    var linkTemplate = chart.links.template;
+    linkTemplate.colorMode = "fromNode";
+    linkTemplate.tooltipText = "{fromName} → {toName}: [bold]{value}[/] GtCO2e\n{fromName} contribute [bold]{value2} %[/] in {toName}\n";
+    // linkTemplate.fillOpacity = 1;
+    // linkTemplate.strokeOpacity = 1;
+    
+    var hoverState = linkTemplate.states.create("hover");
+    hoverState.properties.fillOpacity = 1;
+
+    // Configure nodes
+    chart.nodes.template.cursorOverStyle = am4core.MouseCursorStyle.pointer;
+    chart.nodes.template.readerTitle = "Click to show/hide or drag to rearrange";
+    chart.nodes.template.showSystemTooltip = true;
+    
+    chart.nodes.template.cursorOverStyle = am4core.MouseCursorStyle.pointer;
+
+      
+      }
+
+  
 }

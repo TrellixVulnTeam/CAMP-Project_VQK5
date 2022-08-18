@@ -35,9 +35,35 @@ def getInputFields():
 @app.route('/outputs', methods=['GET']) 
 @cross_origin()
 def getOutputFields():
+
     model.generateOutput()
+
+    #outputData = model.displayOutput()
+
+    # outputTitle = model.getTitle()
+
+    # jsondata = {}
+    # jsondata["xx"]= outputData
+    # jsondata["title"]= outputTitle
+    # print(jsondata)
+
+    return jsonify(
+                message=f"success: generateoutput",
+                category="success",
+                status=200
+                )
+
+
+
+@app.route('/chart', methods=['GET']) 
+@cross_origin()
+def getChart():
+
     outputData = model.displayOutput()
     return json.dumps(outputData)
+
+
+
 
 
 @app.route('/inputs', methods=['POST', 'GET'])
@@ -49,13 +75,19 @@ def setInputs():
         
         ws=model.modelFile()
         model.setInputs(ws,inputsList)
-        outputData=model.getOutput(ws)
+        #outputData=model.getOutput(ws)
         # model.setInputs(ws, model.DEFAULT_INPUT)
         
+
+
+        model.generateOutput()
+       # outputData = model.displayOutput()
+
+
         return jsonify(
                 message=f"success: model output",
                 category="success",
-                data=outputData,
+                data=json.dumps(outputData),
                 status=200
                 )
     except Exception as e:

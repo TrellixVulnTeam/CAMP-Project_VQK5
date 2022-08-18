@@ -8,7 +8,7 @@ import { AppService } from './app.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Angular CAMP-Project';
+  title = 'CAMP_Project';
   burgerOpen: boolean = false;
   url: string = "";
   constructor(private route: ActivatedRoute, private router: Router , private service: AppService) { 
@@ -18,6 +18,4 @@ export class AppComponent {
       }
     });
   }
-
-  
 }

@@ -1,0 +1,22 @@
+Country,Subsector,CO2_GtCO2e,CH4_GtCO2e,N2O_GtCO2e,Unit,Percentage,Percentage ,Percentage  ,
+Armenia,Power and Heat,0.0009865979217625102,8.51016037393223e-07,1.2833011233482112e-06,GtCO2e,13.45,0.03,0.08,%
+Armenia,Industrial Combustion,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Fugitive Energy Emissions,0.0,0.0006560197375199999,0.0,GtCO2e,0.0,23.43,0.0,%
+Armenia,Fosil Fuel Files,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Subsector Commercial,0.0001084889947523996,2.2849599120640234e-06,1.7348603581509203e-08,GtCO2e,1.48,0.08,0.0,%
+Armenia,Subsector Residential,0.0032809288326638604,2.6928237925079842e-05,6.573525653888204e-06,GtCO2e,44.72,0.96,0.42,%
+Armenia,Subsector Agriculture/Forestry,0.000257837886475589,4.800347691748224e-08,1.768146301614389e-07,GtCO2e,3.51,0.0,0.01,%
+Armenia,Subsector Other Unspecified,7.19366149545211e-05,2.1643898586981867e-08,1.8393474065008087e-07,GtCO2e,0.98,0.0,0.01,%
+Armenia,Subsector Aviation,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Subsector Road,0.0009358283788022321,8.892079402243212e-05,2.755250636571694e-05,GtCO2e,12.75,3.18,1.75,%
+Armenia,Subsector International Shipping,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Subsector Other Surface Transport,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Subsector Industrial Combustion ,0.0010987377586717515,5.154937900280062e-07,1.02725753063939e-06,GtCO2e,14.98,0.02,0.07,%
+Armenia,Subsector Minerals,0.0003097031090623824,0.0,0.0,GtCO2e,4.22,0.0,0.0,%
+Armenia,Subsector Chemical Industry,1.156786930212147e-07,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Subsector Metals Industry,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Subsector Solvents,0.0002491406766542715,0.0,2.234951125473213e-05,GtCO2e,3.4,0.0,1.42,%
+Armenia,Subsector Pulp and Paper Food Beverage Wood,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Subsector Other Non Combustion,0.0,0.0,0.0,GtCO2e,0.0,0.0,0.0,%
+Armenia,Subsector Agriculture Non Combustion,0.0,0.0013037094,0.0013928564962277657,GtCO2e,0.0,46.56,88.22,%
+Armenia,Subsector Waste,3.7784309703574095e-05,0.0007210051445977011,0.0001267783395983338,GtCO2e,0.51,25.75,8.03,%

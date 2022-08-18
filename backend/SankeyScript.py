@@ -7,12 +7,6 @@ import pycountry_convert as pc
 import json
 import webbrowser
 
-# country_code = pc.country_name_to_country_alpha2("China", cn_name_format="default")
-# print(country_code)#CN
-# continent_name = pc.country_alpha2_to_continent_code(country_code)
-# print(continent_name)#AS
-
-
 today = date.today()
 title = status = status1 = status_header = status_header_1 = item1 = item2 = ''
 Gas = Result = Country = Country_Code = Region = Region_Code = GWP = Diagnostic_run = path = ''
@@ -21,21 +15,20 @@ year_list, country_list = ([] for i in range(2))
 Country_, Year_, technologies, CO2_ktCO2, CO2_ktCO2_unit, CH4_ktCH4, CH4_ktCH4_unit, N2O_ktN2O, N2O_ktN2O_unit, CO2_GtCO2e, CH4_GtCO2e, N2O_GtCO2e, GHGs_GtCO2e, unit, gas_ktgas, gas_ktgas_unit, gas_GtCO2e = ([] for i in range(17))
 output_df = pandas.DataFrame()
 cnt = 0
+
 #Chart data
 technology_data, subsector_data, sector_data, final_data = ([] for i in range(4))
-
 
 #changed file input
 input_df = pandas.read_excel(input_file, sheet_name='input_techniques', header=None)
 
-
-
 def get_inputs():
     
-    global Gas, Result, Country, Country_Code, Region_Code, Region, Regions, Year, Year_to, year_list, country_list, GWP, Diagnostic_run, path, co2_gwp, ch4_gwp,n2o_gwp, gas_gwp,Sector_lists, Subsector_lists, Subsector_Name, Sector_Name
+    global Gas, Result, Display, Country, Country_Code, Region_Code, Region, Regions, Year, Year_to, year_list, country_list, GWP, Diagnostic_run, path, co2_gwp, ch4_gwp,n2o_gwp, gas_gwp,Sector_lists, Subsector_lists, Subsector_Name, Sector_Name
     
     Gas = input_df.iloc[7][10]
     Result = input_df.iloc[7][13]
+    Display = input_df.iloc[7][16]
     
     Country = input_df.iloc[11][10]
     Country_Code = input_df.iloc[13][10]
@@ -148,7 +141,7 @@ def get_inputs():
     elif Gas == 'SO2':
         gas_gwp = 1
 
-
+    
     if Year == Year_to:
         directory = Country + '_' + str(Year) + '_run time_' + datetime.now().strftime('%d-%m-%Y_%H-%M-%S')
     else:
@@ -156,8 +149,6 @@ def get_inputs():
 
     path = os.path.join(DIR_PATH, 'outputs', directory) #edited output to outputs here
     os.mkdir(path)
-
-
 
 def select_input_files():
     global co2_df,ch4_df,n2o_df,gas_df
@@ -185,7 +176,7 @@ def select_input_files():
         elif Gas == 'Nox':
             gas_df = pandas.read_csv(nox_gfile)
         elif Gas == 'OC':
-            gas_df = pandas.reas_csv(oc_gfile)
+            gas_df = pandas.read_csv(oc_gfile)
         elif Gas == 'SO2':
             gas_df = pandas.read_csv(so2_gfile)
 
@@ -228,7 +219,7 @@ def select_input_files():
                 gas_df = pandas.read_csv(nox_cfile)
                 gas_df = gas_df[gas_df.country.str.contains(Country_Code)]
             elif Gas == 'OC':
-                gas_df = pandas.reas_csv(oc_cfile)
+                gas_df = pandas.read_csv(oc_cfile)
                 gas_df = gas_df[gas_df.country.str.contains(Country_Code)]
             elif Gas == 'SO2':
                 gas_df = pandas.read_csv(so2_cfile)
@@ -282,17 +273,14 @@ def select_input_files():
                 #gas_df = gas_df[gas_df.country.str.contains(Country_Code)]
                 gas_df = gas_df[gas_df['country'].isin(Regions)]
             elif Gas == 'OC':
-                gas_df = pandas.reas_csv(oc_cfile)
+                gas_df = pandas.read_csv(oc_cfile)
                 #gas_df = gas_df[gas_df.country.str.contains(Country_Code)]
                 gas_df = gas_df[gas_df['country'].isin(Regions)]
             elif Gas == 'SO2':
                 gas_df = pandas.read_csv(so2_cfile)
                 #gas_df = gas_df[gas_df.country.str.contains(Country_Code)]
                 gas_df = gas_df[gas_df['country'].isin(Regions)]
-
-        
-
-    
+      
 def start():
 
     global title, Country_, Year_, technologies, year_list, cnt, unit, output_df, chart_data_file_tech, chart_data_file_tech_GHGs, chart_data_file_sector, chart_data_file_subsector
@@ -492,8 +480,6 @@ def start():
         by_sector_df_all = tmp_df_.groupby(['Sector','Year'], sort=False, as_index=False).mean()
         
   
-    
-    
 
     # 1
     if Gas == 'GHGs':
@@ -659,18 +645,13 @@ def start():
 
 
 
-
 get_inputs()
 select_input_files()
 start()
 
-
-
-
-
 # Sectors colors
-sector_colors = ["#F2674A 0.9", "#fbda16 0.9", "#FAAC59 0.9", "#1778f9 0.9", "#A46CAD 0.9", "#E63C56 0.9" ]
-subsector_colors = ["#F2674A 0.9", "#fbda16 0.9", "#FAAC59 0.9", "#1778f9 0.9", "#A46CAD 0.9", "#E63C56 0.9"]
+sector_colors = ["#F2674A", "#fbda16", "#FAAC59", "#1778f9", "#A46CAD", "#E63C56" ]
+subsector_colors = ["#F2674A", "#fbda16", "#FAAC59", "#1778f9", "#A46CAD", "#E63C56"]
 
 hovered_sector_colors = ["#F2674A", "#fbda16", "#FAAC59", "#1778f9", "#A46CAD", "#E63C56" ]
 hovered_subsector_colors = ["#F2674A", "#fbda16", "#FAAC59", "#1778f9", "#A46CAD", "#E63C56"]
@@ -678,189 +659,196 @@ hovered_subsector_colors = ["#F2674A", "#fbda16", "#FAAC59", "#1778f9", "#A46CAD
 colors_data = {"CO2":"#404040 0.9", "CH4":"#585858 0.9", "N2O":"#696969 0.9", "BC":"#787878 0.9", "CO":"#909090 0.9","NH3":"#A8A8A8 0.9","NMVOC":"#B8B8B8 0.9", "NOx":"#C8C8C8 0.9", "OC":"#D8D8D8 0.9", "SO2":"#E8E8E8 0.9"}
 hovered_colors_data = {"CO2":"#404040", "CH4":"#585858", "N2O":"#696969", "BC":"#787878", "CO":"#909090","NH3":"#A8A8A8","NMVOC":"#B8B8B8", "NOx":"#C8C8C8", "OC":"#D8D8D8", "SO2":"#E8E8E8"}
 
-
-
 for i, sector in enumerate(Sector_Name):
     colors_data[sector] = sector_colors[i]
+    hovered_colors_data[sector] = hovered_sector_colors[i]
 
     
+# for i, subsector in enumerate(Subsector_Name):
+#     colors_data[subsector] = sector_colors[i]
+#     hovered_colors_data[subsector] = hovered_sector_colors[i]
 
+# for i, tech in enumerate(Technology_name):
+#     colors_data[tech] = sector_colors[i]
+#     hovered_colors_data[tech] = hovered_sector_colors[i]
 
-
-#1- from technology block to subsector block
-# chart_data_df_tech = pandas.read_csv(chart_data_file_tech)
-
-# for ind, t in enumerate(chart_data_df_tech['Technology']):
-#     for i, val in enumerate(Subsector_lists):
-#         for tech in val:
-#             if t == tech:
-#                 if Gas == 'GHGs':
-#                     item1 = {'from': t, 'to': Subsector_Name[i], 'weight': chart_data_df_tech['CO2_GtCO2e'][ind] + chart_data_df_tech['CH4_GtCO2e'][ind] + chart_data_df_tech['N2O_GtCO2e'][ind]}
-#                 else:
-#                     item1 = {'from': t, 'to': Subsector_Name[i], 'weight': chart_data_df_tech[Gas + '_GtCO2e'][ind]}
-#                 technology_data.append(item1)
-#                 final_data.append(item1)
-#                 break 
-
-# with open(path + f'/by technology data.txt', 'w') as outfile:
-#     json.dump(technology_data, outfile)
-
-# #2- from subsector block to sector block
-# chart_data_df_subsector = pandas.read_csv(chart_data_file_subsector)
-# for ind_, s_ in enumerate(chart_data_df_subsector['Subsector']):
-#     exit_ = 0
-#     for i_, val_ in enumerate(Sector_lists):
-#         for subsector_ in val_:
-#             if s_ == subsector_:
-#                 if Gas == 'GHGs':
-#                     item1 = {'from': s_, 'to': Sector_Name[i_], 'weight': chart_data_df_subsector['CO2_GtCO2e'][ind_] + chart_data_df_subsector['CH4_GtCO2e'][ind_] + chart_data_df_subsector['N2O_GtCO2e'][ind_]}
-#                 else:
-#                     item1 = {'from': s_, 'to': Sector_Name[i_], 'weight': chart_data_df_subsector[Gas + '_GtCO2e'][ind_]}
-#                 subsector_data.append(item1)
-#                 final_data.append(item1)
-#                 exit_ = 1
-#                 break
-#         if exit_ == 1:
-#             break
-#         else:
-#             continue 
-
-# with open(path + f'/by subsector data.txt', 'w') as outfile:
-#     json.dump(subsector_data, outfile)
-
-#3- from sector block to emission block
-# chart_data_df_sector = pandas.read_csv(chart_data_file_sector)
-
-# for ind, t in enumerate(chart_data_df_sector['Sector']):
-#     if Gas == 'GHGs':
-#         item1 = {'from': t, 'to': 'CO2', 'weight': chart_data_df_sector['CO2_GtCO2e'][ind]}
-#         item2 = {'from': t, 'to': 'CH4', 'weight': chart_data_df_sector['CH4_GtCO2e'][ind]}
-#         item3 = {'from': t, 'to': 'N2O', 'weight': chart_data_df_sector['N2O_GtCO2e'][ind]}
-
-#         sector_data.append(item1)
-#         sector_data.append(item2)
-#         sector_data.append(item3)
-
-#         final_data.append(item1)
-#         final_data.append(item2)
-#         final_data.append(item3)
-#     else:
-#         item1 = {'from': t, 'to': Gas, 'weight': chart_data_df_sector[Gas + '_GtCO2e'][ind]}
-#         sector_data.append(item1)
-#         final_data.append(item1)
-
-# with open(path + f'/by sector data.txt', 'w') as outfile:
-#     json.dump(sector_data, outfile)
-
-
-
-
-
-#1- from sector block to subsector block
+    
+chart_data_df_sector = pandas.read_csv(chart_data_file_sector)
 chart_data_df_subsector = pandas.read_csv(chart_data_file_subsector)
-for ind_, s_ in enumerate(chart_data_df_subsector['Subsector']):
-    exit_ = 0
-    for i_, val_ in enumerate(Sector_lists):
-        for subsector_ in val_:
-            if s_ == subsector_:
-                if Gas == 'GHGs':
-                    item1 = {'from': Sector_Name[i_], 'to':s_ , 'weight': chart_data_df_subsector['CO2_GtCO2e'][ind_] + chart_data_df_subsector['CH4_GtCO2e'][ind_] + chart_data_df_subsector['N2O_GtCO2e'][ind_]}
-                    
-                else:
-                    item1 = {'from': Sector_Name[i_], 'to':s_ , 'weight': chart_data_df_subsector[Gas + '_GtCO2e'][ind_]}
-                    
-                colors_data[s_] = subsector_colors[i_]
+chart_data_df_tech = pandas.read_csv(chart_data_file_tech)
 
-                sector_data.append(item1)
-                final_data.append(item1)
 
-                exit_ = 1
-                break
-        if exit_ == 1:
-            break
+
+if Display == "Sectors":
+
+    for ind, s_ in enumerate(chart_data_df_sector['Sector']):
+        if Gas == 'GHGs':
+            item1 = {'from': s_, 'to': 'CO2', 'weight': chart_data_df_sector['CO2_GtCO2e'][ind], 'value2': chart_data_df_sector['Percentage'][ind], 'nodeColor':sector_colors[ind]}
+            item2 = {'from': s_, 'to': 'CH4', 'weight': chart_data_df_sector['CH4_GtCO2e'][ind], 'value2': chart_data_df_sector['Percentage '][ind], 'nodeColor':sector_colors[ind]}
+            item3 = {'from': s_, 'to': 'N2O', 'weight': chart_data_df_sector['N2O_GtCO2e'][ind], 'value2': chart_data_df_sector['Percentage  '][ind], 'nodeColor':sector_colors[ind]}
+            
+            sector_data.append(item1)
+            sector_data.append(item2)
+            sector_data.append(item3)
+
+            final_data.append(item1)
+            final_data.append(item2)
+            final_data.append(item3)
         else:
-            continue 
+            item1 = {'from': s_, 'to': Gas, 'weight': chart_data_df_sector[Gas + '_GtCO2e'][ind], 'value2': chart_data_df_sector['Percentage'][ind], 'nodeColor':sector_colors[ind]}
+            sector_data.append(item1)
+            final_data.append(item1)
 
-with open(path + f'/by sector data.txt', 'w') as outfile:
-    json.dump(sector_data, outfile)
-
-#2- from subsector block to emission block
-chart_data_df_subsector = pandas.read_csv(chart_data_file_subsector)
-for ind, s_ in enumerate(chart_data_df_subsector['Subsector']):
-    if Gas == 'GHGs':
-        item1 = {'from': s_, 'to': 'CO2', 'weight': chart_data_df_subsector['CO2_GtCO2e'][ind]}
-        item2 = {'from': s_, 'to': 'CH4', 'weight': chart_data_df_subsector['CH4_GtCO2e'][ind]}
-        item3 = {'from': s_, 'to': 'N2O', 'weight': chart_data_df_subsector['N2O_GtCO2e'][ind]}
-        
-        subsector_data.append(item1)
-        subsector_data.append(item2)
-        subsector_data.append(item3)
-
-        final_data.append(item1)
-        final_data.append(item2)
-        final_data.append(item3)
-    else:
-        item1 = {'from': s_, 'to': Gas, 'weight': chart_data_df_subsector[Gas + '_GtCO2e'][ind]}
-        subsector_data.append(item1)
-        final_data.append(item1)
-
-with open(path + f'/by subsector data.txt', 'w') as outfile:
-    json.dump(subsector_data, outfile)
-
-
-
-#2- from subsector block to technology block
-# chart_data_df_tech = pandas.read_csv(chart_data_file_tech)
-
-# for ind, t in enumerate(chart_data_df_tech['Technology']):
-#     for i, val in enumerate(Subsector_lists):
-#         for tech in val:
-#             if t == tech:
-#                 if Gas == 'GHGs':
-#                     item1 = {'from': Subsector_Name[i], 'to':t , 'weight': chart_data_df_tech['CO2_GtCO2e'][ind] + chart_data_df_tech['CH4_GtCO2e'][ind] + chart_data_df_tech['N2O_GtCO2e'][ind]}
-#                 else:
-#                     item1 = {'from': Subsector_Name[i], 'to': t, 'weight': chart_data_df_tech[Gas + '_GtCO2e'][ind]}
-                
-                
-#                 #colors_data[t] = technology_colors[i]
-                
-#                 technology_data.append(item1)
-#                 final_data.append(item1)
-#                 break 
-
-# with open(path + f'/by technology data.txt', 'w') as outfile:
-#     json.dump(technology_data, outfile)
-
-
-
-#3- from technology block to emission block
-# chart_data_df_sector = pandas.read_csv(chart_data_file_tech)
-# for ind, t in enumerate(chart_data_df_sector['Technology']):
-#     if Gas == 'GHGs':
-#         item1 = {'from': t, 'to': 'CO2', 'weight': chart_data_df_sector['CO2_GtCO2e'][ind]}
-#         item2 = {'from': t, 'to': 'CH4', 'weight': chart_data_df_sector['CH4_GtCO2e'][ind]}
-#         item3 = {'from': t, 'to': 'N2O', 'weight': chart_data_df_sector['N2O_GtCO2e'][ind]}
-
-#         technology_data.append(item1)
-#         technology_data.append(item2)
-#         technology_data.append(item3)
-
-#         final_data.append(item1)
-#         final_data.append(item2)
-#         final_data.append(item3)
-#     else:
-#         item1 = {'from': t, 'to': Gas, 'weight': chart_data_df_sector[Gas + '_GtCO2e'][ind]}
-#         technology_data.append(item1)
-#         final_data.append(item1)
-
-# with open(path + f'/by sector data.txt', 'w') as outfile:
-#     json.dump(technology_data, outfile)
+    with open(path + f'/sector to emission.txt', 'w') as outfile:
+        json.dump(sector_data, outfile)
 
 
 
 
+elif Display == "Sectors Subsectors":
+    
+    #1- from sector block to subsector block
+    
+    for ind_, s_ in enumerate(chart_data_df_subsector['Subsector']):
+        exit_ = 0
+        for i_, val_ in enumerate(Sector_lists):
+            for subsector_ in val_:
+                if s_ == subsector_:
+                    if Gas == 'GHGs':
+                        item1 = {'from': Sector_Name[i_], 'to':s_ , 'weight': chart_data_df_subsector['CO2_GtCO2e'][ind_] + chart_data_df_subsector['CH4_GtCO2e'][ind_] + chart_data_df_subsector['N2O_GtCO2e'][ind_], 'nodeColor':sector_colors[i_]}
+                        
+                    else:
+                        item1 = {'from': Sector_Name[i_], 'to':s_ , 'weight': chart_data_df_subsector[Gas + '_GtCO2e'][ind_], 'nodeColor':sector_colors[i_]}
+                        
+                    # colors_data[s_] = subsector_colors[i_]
+                    colors_data[s_] = sector_colors[i_]
+                    hovered_colors_data[s_] = hovered_sector_colors[i_]
+
+                    sector_data.append(item1)
+                    final_data.append(item1)
+
+                    exit_ = 1
+                    break
+            if exit_ == 1:
+                break
+            else:
+                continue 
+
+    with open(path + f'/sector to subsector.txt', 'w') as outfile:
+        json.dump(sector_data, outfile)
+
+    #2- from subsector block to emission block
+    for ind, s_ in enumerate(chart_data_df_subsector['Subsector']):
+        if Gas == 'GHGs':
+            item1 = {'from': s_, 'to': 'CO2', 'weight': chart_data_df_subsector['CO2_GtCO2e'][ind], 'value2': chart_data_df_subsector['Percentage'][ind]}
+            item2 = {'from': s_, 'to': 'CH4', 'weight': chart_data_df_subsector['CH4_GtCO2e'][ind], 'value2': chart_data_df_subsector['Percentage '][ind]}
+            item3 = {'from': s_, 'to': 'N2O', 'weight': chart_data_df_subsector['N2O_GtCO2e'][ind], 'value2': chart_data_df_subsector['Percentage  '][ind]}
+            
+            subsector_data.append(item1)
+            subsector_data.append(item2)
+            subsector_data.append(item3)
+
+            final_data.append(item1)
+            final_data.append(item2)
+            final_data.append(item3)
+        else:
+            item1 = {'from': s_, 'to': Gas, 'weight': chart_data_df_subsector[Gas + '_GtCO2e'][ind], 'value2': chart_data_df_subsector['Percentage'][ind]}
+            subsector_data.append(item1)
+            final_data.append(item1)
+
+    with open(path + f'/subsector to emission.txt', 'w') as outfile:
+        json.dump(subsector_data, outfile)
 
 
+
+
+elif Display == "Sectors Subsectors Technologies":
+
+    #1- from sector block to subsector block
+    
+    for ind_, s_ in enumerate(chart_data_df_subsector['Subsector']):
+        exit_ = 0
+        for i_, val_ in enumerate(Sector_lists):
+            for subsector_ in val_:
+                if s_ == subsector_:
+                    if Gas == 'GHGs':
+                        item1 = {'from': Sector_Name[i_], 'to':s_ , 'weight': chart_data_df_subsector['CO2_GtCO2e'][ind_] + chart_data_df_subsector['CH4_GtCO2e'][ind_] + chart_data_df_subsector['N2O_GtCO2e'][ind_], 'nodeColor':sector_colors[i_]}
+                        
+                    else:
+                        item1 = {'from': Sector_Name[i_], 'to':s_ , 'weight': chart_data_df_subsector[Gas + '_GtCO2e'][ind_], 'nodeColor':sector_colors[i_]}
+                        
+                    # colors_data[s_] = subsector_colors[i_]
+                    colors_data[s_] = sector_colors[i_]
+                    hovered_colors_data[s_] = hovered_sector_colors[i_]
+                    
+                    sector_data.append(item1)
+                    final_data.append(item1)
+
+                    exit_ = 1
+                    break
+            if exit_ == 1:
+                break
+            else:
+                continue 
+  
+  
+    with open(path + f'/sector to subsector.txt', 'w') as outfile:
+        json.dump(sector_data, outfile)
+    
+    #2- from subsector block to technology block
+
+    for ind, t in enumerate(chart_data_df_tech['Technology']):
+        for i, val in enumerate(Subsector_lists):
+            for tech in val:
+                if t == tech:
+                    if Gas == 'GHGs':
+                        item1 = {'from': Subsector_Name[i], 'to':t , 'weight': chart_data_df_tech['CO2_GtCO2e'][ind] + chart_data_df_tech['CH4_GtCO2e'][ind] + chart_data_df_tech['N2O_GtCO2e'][ind]}
+                    else:
+                        item1 = {'from': Subsector_Name[i], 'to': t, 'weight': chart_data_df_tech[Gas + '_GtCO2e'][ind]}
+                    
+                    # if(Subsector_Name[i] in Sector_lists):
+
+                    #     colors_data[t] = sector_colors[Sector_lists.index(Subsector_Name[i])]
+                    #     hovered_colors_data[t] = hovered_sector_colors[Sector_lists.index(Subsector_Name[i])]
+
+                    subsector_data.append(item1)
+                    final_data.append(item1)
+                    break 
+
+    with open(path + f'/subsector to technology.txt', 'w') as outfile:
+        json.dump(subsector_data, outfile)
+
+    #3- from technology block to emission block
+
+    for ind, t in enumerate(chart_data_df_tech['Technology']):
+        if Gas == 'GHGs':
+            item1 = {'from': t, 'to': 'CO2', 'weight': chart_data_df_tech['CO2_GtCO2e'][ind], 'value2': chart_data_df_tech['Percentage'][ind]}
+            item2 = {'from': t, 'to': 'CH4', 'weight': chart_data_df_tech['CH4_GtCO2e'][ind], 'value2': chart_data_df_tech['Percentage '][ind]}
+            item3 = {'from': t, 'to': 'N2O', 'weight': chart_data_df_tech['N2O_GtCO2e'][ind], 'value2': chart_data_df_tech['Percentage  '][ind]}
+
+            technology_data.append(item1)
+            technology_data.append(item2)
+            technology_data.append(item3)
+
+            final_data.append(item1)
+            final_data.append(item2)
+            final_data.append(item3)
+        else:
+            item1 = {'from': t, 'to': Gas, 'weight': chart_data_df_tech[Gas + '_GtCO2e'][ind], 'value2': chart_data_df_tech['Percentage'][ind]}
+            technology_data.append(item1)
+            final_data.append(item1)
+
+    with open(path + f'/technology to emission.txt', 'w') as outfile:
+        json.dump(technology_data, outfile)
+
+
+
+
+
+jsondata = {}
+#final_data.append([{"CO2":"#404040"}, {"CH4":"#585858"}, {"N2O":"#696969"}, {"BC":"#787878"}, {"CO":"#909090"},{"NH3":"#A8A8A8"},{"NMVOC":"#B8B8B8"}, {"NOx":"#C8C8C8"}, {"OC":"#D8D8D8"}, {"SO2":"#E8E8E8"}])
+#final_data.append({"to": "CO2", "nodeColor": "#404040"})
+#final_data.append({"to": "CH4", "nodeColor": "#585858"})
 
 
 
@@ -868,10 +856,12 @@ with open(path + f'/sankey chart data.txt', 'w') as outfile:
     json.dump(final_data, outfile)
 
 with open(DIR_PATH + f'/data.json', 'w') as f:
-    f.write(json.dumps(final_data))
+    jsondata["sankeydata"]= final_data
+    jsondata["title"]= title
+    f.write(json.dumps(jsondata))
     
-with open(DIR_PATH + f'/title.js', 'w') as f:
-    f.write("title = " + json.dumps(title))
+with open(DIR_PATH + f'/title.json', 'w') as f:
+    f.write(json.dumps(title))
 
 with open(DIR_PATH + f'/colors.js', 'w') as f:
     f.write("colors = " + json.dumps(colors_data))

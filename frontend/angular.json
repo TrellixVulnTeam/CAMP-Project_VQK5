@@ -3,13 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "CAMP-Project": {
+    "CAMP_Project": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:application": {
-          "strict": true
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -68,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "CAMP-Project:build:production"
+              "browserTarget": "CAMP_Project:build:production"
             },
             "development": {
-              "browserTarget": "CAMP-Project:build:development"
+              "browserTarget": "CAMP_Project:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "CAMP-Project:build"
+            "browserTarget": "CAMP_Project:build"
           }
         },
         "test": {
@@ -102,5 +98,7 @@
       }
     }
   },
-  "defaultProject": "CAMP-Project"
+  "cli": {
+    "analytics": false
+  }
 }

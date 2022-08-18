@@ -9,7 +9,7 @@ import confiq
 #Model File
 MODEL_FILE_INPUT = confiq.DIR_PATH + '/models/model-file-camp-sankey.xlsx'
 MODEL_SHEET_INPUT = 'app'
-INPUT_FIELDS_RANGE = 'A4:H12' 
+INPUT_FIELDS_RANGE = 'A4:H13' 
 INPUTS_START_CELL = 'F5' #Start of Highlighted Fields
 
 
@@ -19,7 +19,7 @@ INPUTS_START_CELL = 'F5' #Start of Highlighted Fields
 #-------------------------------------------
 
 def modelFile():
-    app = xw.App(visible=False)
+    #app = xw.App(visible=False)
     wb = xw.Book(MODEL_FILE_INPUT)
     ws = wb.sheets[MODEL_SHEET_INPUT]
     
@@ -43,17 +43,30 @@ def setInputs(ws, inputsList):
 
 app_dir= confiq.DIR_PATH 
 
-command = 'python3 SankeyScript.py'
 
 
 def generateOutput():
-    print(command)
+    wb = xw.Book(MODEL_FILE_INPUT)
+    ws = wb.sheets[MODEL_SHEET_INPUT]
+    wb.save()
+    
+    command = 'python SankeyScript.py'
     os.popen(command)
 
+    wb.close()
+    print("generated !")
+
+    
 def displayOutput():
     with open("data.json") as FILE_OUTPUT:
         data = json.load(FILE_OUTPUT)
+        print(data)
     return data
+
+# def getTitle():
+#     with open("title.json") as f:
+#         data = json.load(f)
+#     return data
     
 
 
